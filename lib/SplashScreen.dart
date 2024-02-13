@@ -1,52 +1,91 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart';
+
+import 'package:dream11_project/LOGINscreen/RegisterScreen.dart';
+
+import 'package:dream11_project/ScreenHome.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
-class ScreenSplash extends StatelessWidget {
-  const ScreenSplash({super.key});
+class ScreenSplash extends StatefulWidget {
+  ScreenSplash({super.key});
+
+  @override
+  State<ScreenSplash> createState() => _ScreenSplashState();
+}
+
+class _ScreenSplashState extends State<ScreenSplash> {
+  @override
+  void initState() {
+    delayed(context);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+      body: Stack(
+        children: [
+          Container(
+            width: 400,
+            height: 600,
+            decoration: BoxDecoration(
+                color: Color.fromARGB(255, 139, 3, 3),
+                borderRadius: BorderRadius.circular(20)),
+            child: Column(
               children: [
-                Text(
-                  "My ",
-                  style: GoogleFonts.lemon(
-                      fontSize: 55,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.green,
-                      letterSpacing: 3),
-                ),
-                Text(
-                  "Team ",
-                  style: GoogleFonts.mooLahLah(
-                      fontSize: 55,
-                      fontWeight: FontWeight.normal,
-                      color: Color.fromARGB(255, 189, 51, 46),
-                      letterSpacing: 5),
+                Padding(
+                  padding: const EdgeInsets.all(30),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 100,
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 150),
-              child: Text("Solutions",
-                  style: TextStyle(
-                    letterSpacing: 7,
-                    fontSize: 23,
-                    fontStyle: FontStyle.italic,
-                    fontWeight: FontWeight.w700,
-                  )),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 400, left: 0, right: 0),
+            child: Container(
+              width: 600,
+              height: 600,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(0),
+                      topRight: Radius.circular(200))),
             ),
-          ],
-        ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 300, left: 30),
+            child: Text(
+              "SporTech",
+              style: GoogleFonts.happyMonkey(
+                  color: Colors.white,
+                  fontSize: 60,
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
+        ],
       ),
     );
   }
+}
+
+delayed(context) async {
+  await Future.delayed(Duration(seconds: 2));
+  Navigator.of(context).push(MaterialPageRoute(
+    builder: (context) {
+      return ScreenRegister();
+    },
+  ));
 }

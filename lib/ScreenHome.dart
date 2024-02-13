@@ -48,6 +48,58 @@ class _ScreenHomeState extends State<ScreenHome> {
       child: Scaffold(
         body: Column(
           children: [
+            Container(
+              color: Color.fromARGB(255, 109, 9, 1),
+              child:
+
+                  //............................................................................Tab Bar
+                  TabBar(
+                      labelStyle: TextStyle(fontWeight: FontWeight.bold),
+                      indicatorColor: Color.fromARGB(255, 255, 255, 255),
+                      unselectedLabelColor: Color.fromARGB(255, 193, 193, 193),
+                      labelColor: Color.fromARGB(255, 255, 255, 255),
+                      tabs: [
+                    Tab(
+                      text: "Cricket",
+                      icon: Icon(
+                        Icons.sports_cricket,
+                        size: 20,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Tab(
+                      icon: Icon(
+                        Icons.sports_kabaddi,
+                        size: 20,
+                        color: Colors.white,
+                      ),
+                      text: 'Kabadi',
+                    ),
+                    Tab(
+                      icon: Icon(
+                        Icons.sports_baseball_outlined,
+                        size: 20,
+                        color: Colors.white,
+                      ),
+                      text: 'Football',
+                    ),
+                  ]),
+            ), /////////////////////////////////////////////////////////////////////////////////Tabbarview()
+            // Expanded(
+            //   child: TabBarView(children: [
+            //   ScreenHomeBottom(),
+            //     Container(
+            //       width: 500,
+            //       height: 500,
+            //       color: Color.fromARGB(255, 54, 244, 184),
+            //     ),
+            //     Container(
+            //       width: 500,
+            //       height: 500,
+            //       color: Colors.red,
+            //     )
+            //   ]),
+            // ),
             Expanded(child: _pages[intexNumber]),
           ],
         ),
@@ -84,7 +136,7 @@ class _ScreenHomeState extends State<ScreenHome> {
               ),
               IconButton(onPressed: () {}, icon: Icon(Icons.wallet))
             ],
-            title: Text("Dream11", style: GoogleFonts.arbutus()),
+            title: Text("Sportech ", style: GoogleFonts.happyMonkey()),
             backgroundColor: Color.fromARGB(255, 109, 9, 1),
             centerTitle: false,
             leading: Stack(
@@ -133,9 +185,7 @@ class _ScreenHomeState extends State<ScreenHome> {
                         child: Container(
                             width: 300,
                             child: ListTile(
-                              onTap: () {
-                                print("gttytt");
-                              },
+                              onTap: () {},
                               leading: Stack(
                                 children: [
                                   CircleAvatar(

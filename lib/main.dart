@@ -1,9 +1,12 @@
 import 'package:dream11_project/Class/DateTimePicker.dart';
+import 'package:dream11_project/Class/sharedPreferences.dart';
+import 'package:dream11_project/LOGINscreen/OTP.dart';
+import 'package:dream11_project/LOGINscreen/RegisterScreen.dart';
 import 'package:dream11_project/ScreenHome.dart';
 import 'package:dream11_project/SplashScreen.dart';
 import 'package:dream11_project/Class/test.dart';
-import 'package:dream11_project/tabbarpage.dart';
-import 'package:dream11_project/tabbarpage2.dart';
+import 'package:dream11_project/Class/tabbarpage.dart';
+import 'package:dream11_project/Class/tabbarpage2.dart';
 import 'package:flutter/material.dart';
 
 import 'BottomNavigation/ScreenBottomHome.dart';
@@ -33,6 +36,6 @@ class MyApp extends StatelessWidget {
           // is not restarted.
           primarySwatch: Colors.blue,
         ),
-        home: ScreenHome());
+        home: ScreenSplash());
   }
 }

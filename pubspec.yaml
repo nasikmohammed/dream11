@@ -41,7 +41,22 @@ dependencies:
   smooth_page_indicator: ^1.1.0
   intl: ^0.18.1
   image_picker: ^1.0.4
-
+  shared_preferences: ^2.0.6
+  animated_text_kit: ^4.2.2
+  another_flutter_splash_screen: ^1.2.0
+  curved_splash_screen: ^1.0.0+1
+  otp_text_field: ^1.1.3
+  ticket_widget: ^0.0.1
+  loading_animation_widget: ^1.2.0+4
+  lazy_loading_list: ^1.0.1
+  rounded_loading_button: ^2.1.0
+  animated_bottom_navigation_bar: ^1.3.3
+  motion_tab_bar: ^2.0.4
+  water_drop_nav_bar: ^2.2.0+5
+  flutter_timer_countdown: ^1.0.7
+  icon_animated: ^1.2.1
+  
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -79,6 +94,16 @@ flutter:
       - Assets\pr4.jpeg
       - Assets\pr5.webp
       - Assets\pr6.jpeg
+      - Assets\dhonidream11.jpeg
+      - Assets\winners\win1.jpeg
+      - Assets\winners\win2.webp
+      - Assets\winners\win3.jpeg
+      - Assets\winners\win7.jpeg
+      - Assets\winners\win5.webp
+      - Assets\winners\win6.jpeg
+      - Assets\winners\PR-Sell.webp
+      - Assets\winners\win8.webp
+      - Assets\winners\win9.webp
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

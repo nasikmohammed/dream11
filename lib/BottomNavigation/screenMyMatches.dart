@@ -6,23 +6,37 @@ import 'package:google_fonts/google_fonts.dart';
 
 class ScreenMyMatches extends StatelessWidget {
   ScreenMyMatches({super.key});
-  List LeadingstTeam = ["NZ", "AUS", "PAK", "CSK", "RCB", "AFG"];
-  List leadingTeam = [
-    "New Zealand",
-    "Australia",
-    "Pakistan",
-    "Chennai ",
-    " Banglore",
-    "Afganistan"
+  List LeadingstTeam = [
+    "BVB",
+    "DC",
+    "RMF",
+    "WI",
+    "CSK",
+    "CL",
   ];
-  List trailingStTeam = ["SL", "ENG", "IND", "KKR", "MI", "WI"];
+  List leadingTeam = [
+    "Dortmund",
+    "Delhi",
+    "Real Madrid",
+    "West Indies",
+    "Chennai ",
+    " Celtic",
+  ];
+  List trailingStTeam = [
+    "CHE",
+    "RR",
+    "BFC",
+    "IND",
+    "GT",
+    "LAK",
+  ];
   List trailingTeam = [
-    "Srilanka",
-    "England",
+    "CHELSEA",
+    "Rajasthan",
+    "Barcelona",
     "India",
-    "Kolkata ",
-    "Mumbai ",
-    "West Indies"
+    "Gujarat ",
+    "Lakers ",
   ];
   List time = [
     "0s",
@@ -40,15 +54,15 @@ class ScreenMyMatches extends StatelessWidget {
     "08:45 AM",
     "01:45 AM"
   ];
-  List Mega = [
-    "MEGA 9 Crores",
-    "MEGA 8 Crores",
-    "MEGA 9 Crores",
-    "MEGA 40 Crores",
-    "MEGA 1.5 Lakh",
-    "MEGA 19 Lakh",
+  List contest = [
+    "1 Team",
+    "2 Team 1 Contest",
+    "1 Team 1 Contest",
+    "1 Team 2 Contest",
+    "2 Teams",
+    "1 Team"
   ];
- 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,9 +70,9 @@ class ScreenMyMatches extends StatelessWidget {
         body: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 30, right: 200),
+              padding: const EdgeInsets.only(top: 30, right: 160),
               child: Text(
-                "Upcoming Matches",
+                "Completed",
                 style: GoogleFonts.archivoBlack(
                     fontSize: 20, fontWeight: FontWeight.bold),
               ),
@@ -78,60 +92,10 @@ class ScreenMyMatches extends StatelessWidget {
                           child: ListTile(
                             onTap: () {},
                             title: Column(
-                              children: [
-                                Center(
-                                    child: Text(
-                                  time[index],
-                                  style: TextStyle(color: Colors.red),
-                                )),
-                                Text(
-                                  strtTime[index],
-                                )
-                              ],
+                              children: [Text("Completed")],
                             ),
                             subtitle: Column(
-                              children: [
-                                Divider(),
-                                Row(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 50),
-                                      child: Container(
-                                        width: 110,
-                                        height: 25,
-                                        decoration: BoxDecoration(
-                                            boxShadow: [
-                                              BoxShadow(
-                                                  blurRadius: 5,
-                                                  color: Color.fromARGB(
-                                                      255, 232, 226, 176),
-                                                  blurStyle: BlurStyle.outer)
-                                            ],
-                                            color: Color.fromARGB(
-                                                255, 225, 218, 149),
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(5))),
-                                        child: Center(
-                                          child: Text(
-                                            Mega[index],
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.brown,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 4),
-                                      child: Icon(
-                                        CupertinoIcons.bell,
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
+                              children: [Divider(), Text(contest[index])],
                             ),
                             leading: Padding(
                               padding: const EdgeInsets.only(top: 20),

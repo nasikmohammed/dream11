@@ -110,7 +110,7 @@ class ScreenChat extends StatelessWidget {
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 130),
+                padding: const EdgeInsets.only(left: 100),
                 child: TextButton.icon(
                     onPressed: () {},
                     icon: Icon(
@@ -137,7 +137,9 @@ class ScreenChat extends StatelessWidget {
                   subtitle: Text("Skill Score:${Skill[index]}"),
                   trailing: Container(
                     height: 30,
-                    decoration: BoxDecoration(border: Border.all()),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all()),
                     child: OutlinedButton(
                         onPressed: () {},
                         child: Text(

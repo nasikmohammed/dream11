@@ -35,7 +35,7 @@ class _ScreenRewardState extends State<ScreenReward> {
                     topLeft: Radius.circular(20),
                     topRight: Radius.circular(20))),
             width: 415,
-            height: 400,
+            height: 700,
             child: Column(
               children: [
                 TabBar(
@@ -159,35 +159,37 @@ Future<void> ShowBottomSheet(BuildContext ctx) async {
   showModalBottomSheet(
     context: ctx,
     builder: (ctx1) {
-      return Container(
-        color: Color.fromARGB(255, 238, 233, 233),
-        width: double.infinity,
-        height: 300,
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 50, left: 20, right: 20),
-              child: TextFormField(
-                decoration: InputDecoration(
-                    suffix: Icon(Icons.delete),
-                    hintText: " Enter Your Code Here",
-                    border: OutlineInputBorder()),
+      return SingleChildScrollView(
+        child: Container(
+          color: Color.fromARGB(255, 238, 233, 233),
+          width: double.infinity,
+          height: 300,
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 50, left: 20, right: 20),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      suffix: Icon(Icons.delete),
+                      hintText: " Enter Your Code Here",
+                      border: OutlineInputBorder()),
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 135),
-              child: Container(
-                  color: Colors.grey,
-                  width: 350,
-                  height: 40,
-                  child: OutlinedButton(
-                      onPressed: () {},
-                      child: Text(
-                        "APPLY NOW",
-                        style: TextStyle(color: Colors.white),
-                      ))),
-            )
-          ],
+              Padding(
+                padding: const EdgeInsets.only(top: 135),
+                child: Container(
+                    color: Colors.grey,
+                    width: 350,
+                    height: 40,
+                    child: OutlinedButton(
+                        onPressed: () {},
+                        child: Text(
+                          "APPLY NOW",
+                          style: TextStyle(color: Colors.white),
+                        ))),
+              )
+            ],
+          ),
         ),
       );
     },
