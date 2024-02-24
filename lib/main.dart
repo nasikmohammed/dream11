@@ -8,6 +8,7 @@ import 'package:dream11_project/Class/test.dart';
 import 'package:dream11_project/Class/tabbarpage.dart';
 import 'package:dream11_project/Class/tabbarpage2.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'BottomNavigation/ScreenBottomHome.dart';
 
@@ -38,4 +39,5 @@ class MyApp extends StatelessWidget {
         ),
         home: ScreenSplash());
   }
+
 }

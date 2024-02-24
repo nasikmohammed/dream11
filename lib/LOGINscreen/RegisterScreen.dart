@@ -1,3 +1,4 @@
+import 'package:dream11_project/Class/sharedPreferences.dart';
 import 'package:dream11_project/LOGINscreen/OTP.dart';
 import 'package:dream11_project/ScreenHome.dart';
 import 'package:flutter/cupertino.dart';
@@ -5,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ticket_widget/ticket_widget.dart';
 
 class ScreenRegister extends StatelessWidget {
@@ -94,23 +96,21 @@ class ScreenRegister extends StatelessWidget {
                       TextFormField(
                         controller: _password,
                         validator: (value) {
-                            if (value!.isEmpty) {
-                            return " empty";
-                            } else if (!value.contains(RegExp(r'[a-z]'))) {
-                              return  "Lower Letter Is Missing";
-                            } else if (!value.contains(RegExp(r'[0-9]'))) {
-                              return  "Digit Is Missing";
-                            } else if (!value.contains(RegExp(r'[!@#%^&*]'))) {
-                              return  "Special Charecter Is Missing";
-                            } else if (value.length < 6) {
-                              return 
-                                  " Password must be longer than 6 charecter";
-                            }
-                            if (!value.contains(RegExp(r'[A-Z]'))) {
-                              return  "Uppercase Letter Is Missing";
-                            }
-                            return null;
- 
+                          if (value!.isEmpty) {
+                            return "Please Enter Your Password";
+                          } else if (!value.contains(RegExp(r'[a-z]'))) {
+                            return "Lower Letter Is Missing";
+                          } else if (!value.contains(RegExp(r'[0-9]'))) {
+                            return "Digit Is Missing";
+                          } else if (!value.contains(RegExp(r'[!@#%^&*]'))) {
+                            return "Special Charecter Is Missing";
+                          } else if (value.length < 6) {
+                            return " Password must be longer than 6 charecter";
+                          }
+                          if (!value.contains(RegExp(r'[A-Z]'))) {
+                            return "Uppercase Letter Is Missing";
+                          }
+                          return null;
                         },
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
@@ -131,6 +131,7 @@ class ScreenRegister extends StatelessWidget {
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(15))),
                             onPressed: () {
+                              SetValue();
                               if (_formKey.currentState!.validate()) {
                                 Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) {
@@ -155,23 +156,12 @@ class ScreenRegister extends StatelessWidget {
           ),
         ));
   }
+
+  
+  Future<void> SetValue() async {
+    final sharedp = await SharedPreferences.getInstance();
+    sharedp.setString("phone", _mobileno.text);
+    sharedp.setString("email", _email.text);
+    sharedp.setString("password", _password.text);
+  }
 }
-////////////////////////////////validation<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-/// validator: (value) {
-                          //   if (value!.isEmpty) {
-                          //     _errormessage = " empty";
-                          //   } else if (!value.contains(RegExp(r'[a-z]'))) {
-                          //     _errormessage = "Lower Letter Is Missing";
-                          //   } else if (!value.contains(RegExp(r'[0-9]'))) {
-                          //     _errormessage = "Digit Is Missing";
-                          //   } else if (!value.contains(RegExp(r'[!@#%^&*]'))) {
-                          //     _errormessage = "Special Charecter Is Missing";
-                          //   } else if (value.length < 6) {
-                          //     _errormessage =
-                          //         " Password must be longer than 6 charecter";
-                          //   }
-                          //   if (!value.contains(RegExp(r'[A-Z]'))) {
-                          //     _errormessage = "Uppercase Letter Is Missing";
-                          //   }
-                          //   return _errormessage;
-                          // },

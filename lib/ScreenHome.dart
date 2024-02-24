@@ -6,6 +6,7 @@ import 'package:dream11_project/BottomNavigation/ScreenChat.dart';
 import 'package:dream11_project/BottomNavigation/ScreenReward.dart';
 import 'package:dream11_project/BottomNavigation/ScreenWinners.dart';
 import 'package:dream11_project/BottomNavigation/screenMyMatches.dart';
+import 'package:dream11_project/LOGINscreen/RegisterScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -13,6 +14,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ScreenHome extends StatefulWidget {
   ScreenHome({super.key});
@@ -33,16 +35,8 @@ class _ScreenHomeState extends State<ScreenHome> {
     Screenwinners()
   ];
 
-  final now = DateTime(2024, 01, 1, 9, 15);
-  final formatttter = DateFormat("EEEE");
-
   @override
   Widget build(BuildContext context) {
-    final formatedtime = formatttter.format(now);
-
-    print(formatedtime);
-    print(now);
-
     return DefaultTabController(
       length: 3,
       child: Scaffold(
@@ -194,9 +188,11 @@ class _ScreenHomeState extends State<ScreenHome> {
                                     child: images == null
                                         ? CircleAvatar(
                                             backgroundImage: AssetImage(fermin))
-                                        : Image.file(
-                                            images!,
-                                            fit: BoxFit.fitWidth,
+                                        : CircleAvatar(
+                                            child: Image.file(
+                                              images!,
+                                              fit: BoxFit.fitWidth,
+                                            ),
                                           ),
                                   )),
                                   Padding(
@@ -361,15 +357,31 @@ class _ScreenHomeState extends State<ScreenHome> {
                 Container(
                   width: 280,
                   decoration: BoxDecoration(
+                    color: Colors.white,
+                  ),
+                  child: ListTile(
+                    onTap: () {},
+                    leading: Icon(Icons.more_horiz),
+                    title: Text("More"),
+                  ),
+                ),
+                SizedBox(
+                  height: .9,
+                ),
+                Container(
+                  width: 280,
+                  decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(10),
                         bottomRight: Radius.circular(10),
                       )),
                   child: ListTile(
-                    onTap: () {},
+                    onTap: () {
+                      logout(context);
+                    },
                     leading: Icon(Icons.more_horiz),
-                    title: Text("More"),
+                    title: Text("Logout"),
                   ),
                 ),
                 Container(
@@ -420,4 +432,19 @@ class _ScreenHomeState extends State<ScreenHome> {
       });
     }
   }
+}
+
+logout(context) async {
+  final shared = await SharedPreferences.getInstance();
+  shared.remove("phone");
+  shared.remove("email");
+  final use = shared.remove("password");
+  print(use);
+  print("tyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
+
+  Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
+    builder: (context) {
+      return ScreenRegister();
+    },
+  ), (route) => false);
 }

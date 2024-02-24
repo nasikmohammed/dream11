@@ -9,6 +9,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ScreenSplash extends StatefulWidget {
   ScreenSplash({super.key});
@@ -21,6 +22,7 @@ class _ScreenSplashState extends State<ScreenSplash> {
   @override
   void initState() {
     delayed(context);
+
     super.initState();
   }
 
@@ -82,10 +84,26 @@ class _ScreenSplashState extends State<ScreenSplash> {
 }
 
 delayed(context) async {
-  await Future.delayed(Duration(seconds: 2));
-  Navigator.of(context).push(MaterialPageRoute(
-    builder: (context) {
-      return ScreenRegister();
-    },
-  ));
+  await Future.delayed(Duration(seconds: 3));
+  getvalue(context);
+}
+
+getvalue(context) async {
+  final _sharedprefs = await SharedPreferences.getInstance();
+  final mobile = _sharedprefs.getString("phone");
+  final mail = _sharedprefs.getString("email");
+  final passwordd = _sharedprefs.getString("password");
+  if (mobile != null && mail != null && passwordd != null) {
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) {
+        return ScreenHome();
+      },
+    ));
+  } else {
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) {
+        return ScreenRegister();
+      },
+    ));
+  }
 }
